@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Form Validation with VueJS</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="card">
+            <div class="card-header">Create Account</div>
+            <div class="card-body">
+
+                <form class="form" id="form" method="POST" v-on:submit="validateForm">
+                    <div class="form-group" v-bind:class="{ 'has-danger': submition && wrongUsername }">
+                        <label for="username">Username</label>
+                        <input id="username" class="form-control" name="username" v-model="username">
+                        <span class="form-control-feedback" v-if="submition && wrongUsername">This field is required.</span>
+                    </div>
+
+                    <div class="form-group" v-bind:class="{ 'has-danger': submition && wrongEmail }">
+                        <label for="email">Email</label>
+                        <input id="email" class="form-control" name="email" v-model="email">
+                        <span class="form-control-feedback" v-if="submition && wrongEmail">{{ emailFeedback }}</span>
+                    </div>
+
+                    <div class="form-group" v-bind:class="{ 'has-danger': submition && wrongPassword }">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" class="form-control" name="password" v-model="password">
+                        <span class="form-control-feedback" v-if="submition && wrongPassword">{{ passwordFeedback }}</span>
+                    </div>
+
+                    <button class="btn btn-primary">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/vue"></script>
+    <script src="demo-form.js"></script>
+</body>
+
+</html>

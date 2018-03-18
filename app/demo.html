@@ -1,0 +1,119 @@
+<script src="https://unpkg.com/vue"></script>
+<style>
+    .blueBold {
+        color: blue;
+        font-weight: bold;
+    }
+</style>
+
+<body>
+    <div id="alert">
+        <h4>Alert {{ message }}</h4>
+        <button v-on:click="alertMessage">Alert</button>
+    </div>
+
+    <script>
+        new Vue({
+            el: '#alert',
+            data: {
+                message: 'Hello Vue.js!'
+            },
+            methods: {
+                alertMessage: function () {
+                    alert(this.message);
+                }
+            }
+        });
+    </script>
+
+
+    <div id="double-binding">
+        <h4>Double binding</h4>
+        <p class="blueBold">Hello {{ message }}</p>
+        <input v-model="message">
+    </div>
+
+    <script>
+        new Vue({
+            el: '#double-binding',
+            data: {
+                message: 'Hello Vue.js!'
+            }
+        });
+    </script>
+
+    <div id="reverse">
+        <h4>Reverse message</h4>
+        <p>{{ message }}</p>
+        <button v-on:click="reverseMessage">Reverse Message</button>
+    </div>
+
+    <script>
+        new Vue({
+            el: '#reverse',
+            data: {
+                message: 'Hello Vue.js!'
+            },
+            methods: {
+                reverseMessage: function () {
+                    this.message = this.message.split('').reverse().join('');
+                }
+            }
+        });
+    </script>
+
+    <div id="loop">
+        <h4>Loop</h4>
+        Array : {{ contacts }}
+        <ul>
+            <li v-for="contact in contacts">{{ contact.firstname + ' - ' + contact.lastname }}</li>
+        </ul>
+    </div>
+
+    <script>
+        new Vue({
+            el: '#loop',
+            data: {
+                contacts: [{
+                        firstname: 'Kelly',
+                        lastname: 'Slater'
+                    },
+                    {
+                        firstname: 'Jeremy',
+                        lastname: 'Flores'
+                    },
+                    {
+                        firstname: 'Tyler',
+                        lastname: 'Wright'
+                    }
+                ]
+            }
+        });
+    </script>
+
+    <div id="if-else">
+        <h4>If Else</h4>
+
+        <button v-on:click="showOrHideMessage">
+            <span v-if="showmessage">Hide message</span>
+            <span v-else>Show message</span>
+        </button>
+
+        <p v-if="showmessage">{{ message }}</p>
+    </div>
+
+    <script>
+        new Vue({
+            el: '#if-else',
+            data: {
+                message: 'Hello Vue.js!',
+                showmessage: true
+            },
+            methods: {
+                showOrHideMessage: function () {
+                    this.showmessage = !this.showmessage;
+                }
+            }
+        });
+    </script>
+</body>

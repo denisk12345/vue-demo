@@ -1,0 +1,31 @@
+<script src="https://unpkg.com/vue"></script>
+
+<div id="app">
+    <p>{{ message }}</p>
+</div>
+
+<script>
+    class Polygon {
+        constructor(height, width) {
+            this.name = 'Polygon';
+            this.height = height;
+            this.width = width;
+        }
+        sayName() {
+            console.log('Hi, I am a ', this.name + '.');
+        }
+        sayHistory() {
+            return '"Polygon" is derived from the Greek polus (many) ' + this.height +
+                'and gonia (angle).';
+        }
+
+    }
+    let polygon = new Polygon(300, 400);
+
+    new Vue({
+        el: '#app',
+        data: {
+            message: polygon.sayHistory()
+        }
+    });
+</script>
